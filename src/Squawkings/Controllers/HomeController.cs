@@ -13,6 +13,7 @@ namespace Squawkings.Controllers
 
         public ActionResult Index()
         {
+			//var vm = new ListSquawkingsViewModel();
 			return View(GetSquawkDisplays());
         }
 
