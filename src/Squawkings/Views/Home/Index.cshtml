@@ -1,5 +1,24 @@
-﻿@{
-    ViewBag.Title = "Home";
+﻿@model IEnumerable<Squawkings.Controllers.HomeController.SquawkDisplay>
+
+@{
+    ViewBag.Title = "Squawkings";
 }
 
-<h2>Hello Squawkers</h2>
+<div class="main-container">
+
+@foreach (var item in Model) {
+
+    <div class="squawk-container">
+        <div class="squawk-name">
+            @Html.DisplayFor(modelItem => item.Username)
+        </div>
+        <div class="squawk-text">
+            @Html.DisplayFor(modelItem => item.Content)
+        </div>
+        <div class="squawk-time">
+            @Html.DisplayFor(modelItem => item.Time)
+        </div>
+    </div>
+}
+
+</div>
