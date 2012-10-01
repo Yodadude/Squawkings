@@ -12,15 +12,22 @@
 @foreach (var item in Model) {
 
     <div class="squawk-container">
-        <div class="squawk-name">
-            @Html.DisplayFor(modelItem => item.Username)
-        </div>
-        <div class="squawk-text">
-            @Html.DisplayFor(modelItem => item.Content)
-        </div>
-        <div class="squawk-time">
-            @Html.DisplayFor(modelItem => item.Time)
-        </div>
+		<div class="squawk-avatar">
+			<a href=""><img src="@Url.Content(item.AvatarUrl)" alt=""/></a>
+		</div>
+		<div class="squawk-body">
+			<div class="squawk-name">
+				@Html.DisplayFor(modelItem => item.Username)
+				<span class="squawk-fullname">(@item.FullName)</span>
+			</div>
+			<div class="squawk-text">
+				@Html.DisplayFor(modelItem => item.Content)
+			</div>
+			<div class="squawk-time">
+				@Html.DisplayFor(modelItem => item.Time)
+			</div>
+		</div>
+		<br class="clear" />
     </div>
 }
 
