@@ -5,35 +5,38 @@
 <div class="main-container">
 	<div class="squawk-title">@ViewBag.Title</div>
 	<div class="squawk-subtitle">
-		See everything happening right now</div>
-	<form>
-	<div class="squawk-input">
-		<textarea name="squawk">This is my first Squawk!</textarea>
-		<input type="submit" value="Squawk" />
-		<br class="clear" />
+		See everything happening right now
 	</div>
-	</form>
-	@foreach (var item in Model)
-	{
- 		<div class="squawk-container">
-			<div class="squawk-avatar">
-				<a href="">
-					<img src="@Url.Content(item.AvatarUrl)" alt=""/>
-				</a>
+	<form method="POST" action="">
+		<div class="squawk-input">
+			<textarea name="squawk">This is my first Squawk!</textarea>
+			<div>
+				<input type="submit" value="Squawk" />
 			</div>
-			<div class="squawk-body">
-				<div class="squawk-name">
-					@Html.DisplayFor(modelItem => item.Username)
-					<span class="squawk-fullname">(@item.FullName)</span>
-				</div>
-				<div class="squawk-text">
-					@Html.DisplayFor(modelItem => item.Content)
-				</div>
-				<div class="squawk-time">
-					@Html.DisplayFor(modelItem => item.Time)
-				</div>
-			</div>
-			<br class="clear" />
 		</div>
-	}
+	</form>
+	<div class="squawk-list">
+		@foreach (var item in Model)
+		{
+ 			<div class="squawk-container">
+				<div class="squawk-avatar">
+					<a href="#">
+						<img src="@Url.Content(item.AvatarUrl)" alt=""/>
+					</a>
+				</div>
+				<div class="squawk-body">
+					<div class="squawk-name">
+						@Html.DisplayFor(modelItem => item.Username)
+						<span>(@item.FullName)</span>
+					</div>
+					<div class="squawk-text">
+						@Html.DisplayFor(modelItem => item.Content)
+					</div>
+					<div class="squawk-time">
+						@Html.DisplayFor(modelItem => item.Time)
+					</div>
+				</div>
+			</div>
+		}
+	</div>
 </div>

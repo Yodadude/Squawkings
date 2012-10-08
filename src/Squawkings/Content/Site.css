@@ -26,7 +26,7 @@
 
 body {
 	background-image: url(images/background.png);
-	font-family: "Helvetica Neue";
+	font-family: "Helvetica Neue", Sans-Serif;
 	font-size: 12pt;
 	line-height: 18px;
 }
@@ -39,15 +39,8 @@ img {
 	border-radius: 8px;
 }
 
-textarea {
-	display:block;
-	height:80px;
-	padding:10px;
-	width:98%;
-}
-
 .main-container {
-	margin: 0 auto;	
+	margin: 0 auto;
 	width: 960px;
 }
 
@@ -59,9 +52,17 @@ textarea {
 	border: 1px solid silver;
 }
 
-.squawk-input input {
-	margin-top: 5px;
-	float:right;
+.squawk-input textarea {
+	display:block;
+	height:80px;
+	padding:10px;
+	width: 905px;
+	overflow: auto;
+}
+
+.squawk-input div {
+	text-align:  right;
+	padding-top: 10px;
 }
 
 .squawk-title {
@@ -79,21 +80,38 @@ textarea {
 	padding-bottom: 15px;
 }
 
-.squawk-container {
-	background-color: #f2f2f2;
+.squawk-list {
 	border: 1px solid #D4D4D4;
 	border-radius: 8px;
+}
+
+.squawk-list .squawk-container:first-child {
+	border-top: 1px solid #D4D4D4;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.squawk-list .squawk-container:last-child {
+	border-bottom: none;
+}
+
+.squawk-container {
+	background-color: #f2f2f2;
+	border-bottom: 1px solid #D4D4D4;
 	padding: 15px;
+	position: relative;
 }
 
 .squawk-avatar {
-	float:left;
+	position: absolute;
+	width: 57px;
+	height: 57px;
+	left: 15px;
+	top: 15px;
 }
 
 .squawk-body {
-	float:left;
-	padding-left:10px;
-	width:90%;
+	margin-left: 68px;
 }
 
 .squawk-text {
@@ -109,13 +127,10 @@ textarea {
 }
 
 div.squawk-name span {
-	font-weight:normal;
+	font-weight: normal;
 }
+
 .squawk-time {
 	color: #A2A2A2;
 	font-size:smaller;
-}
-
-.clear {
-	clear:both;
 }
