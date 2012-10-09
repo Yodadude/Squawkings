@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Squawkings.Models;
 
 namespace Squawkings.Controllers
 {
@@ -16,7 +17,6 @@ namespace Squawkings.Controllers
 			//var vm = new ListSquawkingsViewModel();
 			return View(GetSquawkDisplays());
         }
-
 
 		private static List<SquawkDisplay> GetSquawkDisplays()
 		{
