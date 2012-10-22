@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using System.Web.Security;
+using Squawkings.Models;
 
 namespace Squawkings.Controllers
 {
@@ -13,8 +11,26 @@ namespace Squawkings.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(new LogonInputModel() {Username = "test"});
         }
 
+		[HttpPost]
+		public ActionResult Index(LogonInputModel input)
+		{
+			if (!ModelState.IsValid)
+			{
+				return Index();
+			}
+
+			if (input.Username == "test" && input.Password == "test")
+			{
+				FormsAuthentication.SetAuthCookie(input.Username, false);
+				return RedirectToAction("Index", "Home");
+			}
+
+			ModelState.AddModelError("", "Failed to login, you have.");
+
+			return View(input);
+		}
     }
 }

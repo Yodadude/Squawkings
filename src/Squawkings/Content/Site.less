@@ -2,6 +2,7 @@
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
+
 .field-validation-error {
 	color: #ff0000;
 }
@@ -22,6 +23,26 @@
 
 .validation-summary-valid {
 	display: none;
+}
+
+.input-validation-error.checkbox,
+.input-validation-error.radio,
+input.input-validation-error,
+select.input-validation-error,
+textarea.input-validation-error  {
+  color: #b94a48;
+  border-color: #b94a48;
+}
+
+.input-validation-error.checkbox:focus,
+.input-validation-error.radio:focus,
+input.input-validation-error:focus,
+select.input-validation-error:focus,
+textarea.input-validation-error:focus {
+  border-color: #953b39;
+  -webkit-box-shadow: 0 0 6px #d59392;
+     -moz-box-shadow: 0 0 6px #d59392;
+          box-shadow: 0 0 6px #d59392;
 }
 
 /* Squawkings Styling */
@@ -137,8 +158,16 @@ div.squawk-name span {
 	font-size:smaller;
 }
 
+* { 
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+
 .header {
 	background-image: url("images/header.png");
+	background-repeat: repeat-x;
+	height: 45px;
 }
 
 .logon-dialog {
@@ -151,9 +180,8 @@ div.squawk-name span {
 	div.editor-field input, p input[type=submit] {
 		width:100%;
 	}
-	input[type=text] {
+	input[type=text], input[type=password] {
 		height:30px;
-		box-sizing:border-box;
 	}
 	p {
 		padding-top: 15px;
