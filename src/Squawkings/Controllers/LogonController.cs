@@ -33,7 +33,7 @@ namespace Squawkings.Controllers
 			{
 				if (Crypto.VerifyHashedPassword(logonUser.Password, input.Password))
 				{
-					FormsAuthentication.SetAuthCookie(input.Username, false);
+					FormsAuthentication.SetAuthCookie(input.Username, input.RememberMe);
 					return RedirectToAction("Index", "Home");
 				}
 			}

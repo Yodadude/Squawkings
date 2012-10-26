@@ -67,27 +67,6 @@ img {
 	width: 960px;
 }
 
-.squawk-input {
-	background-color: #f2f2f2;
-	padding:15px;
-	margin-bottom:10px;
-	border-radius:8px;
-	border: 1px solid silver;
-}
-
-.squawk-input textarea {
-	display:block;
-	height:80px;
-	padding:10px;
-	width: 905px;
-	overflow: auto;
-}
-
-.squawk-input div {
-	text-align:  right;
-	padding-top: 10px;
-}
-
 .squawk-title {
 	color: #555;
 	font-size: 50px;
@@ -103,19 +82,36 @@ img {
 	padding-bottom: 15px;
 }
 
+.squawk-input {
+	background-color: #f2f2f2;
+	padding:15px;
+	margin-bottom:10px;
+	border-radius:8px;
+	border: 1px solid silver;
+	textarea {
+		display:block;
+		height:80px;
+		padding:10px;
+		width: 905px;
+		overflow: auto;
+	}
+	div {
+		text-align:  right;
+		padding-top: 10px;
+	}
+}
+
 .squawk-list {
 	border: 1px solid #D4D4D4;
 	border-radius: 8px;
-}
-
-.squawk-list .squawk-container:first-child {
-	border-top: 1px solid #D4D4D4;
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
-}
-
-.squawk-list .squawk-container:last-child {
-	border-bottom: none;
+	.squawk-container:first-child {
+		border-top: 1px solid #D4D4D4;
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+	}
+	.squawk-container:last-child {
+		border-bottom: none;
+	}
 }
 
 .squawk-container {
@@ -147,10 +143,9 @@ img {
 	color: #333;
 	font-weight: bold;
 	padding-bottom: 10px;
-}
-
-div.squawk-name span {
-	font-weight: normal;
+	span {
+		font-weight: normal;
+	}
 }
 
 .squawk-time {
