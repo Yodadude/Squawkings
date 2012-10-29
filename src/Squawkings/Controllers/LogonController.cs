@@ -25,7 +25,7 @@ namespace Squawkings.Controllers
 				return Index();
 			}
 
-			IDatabase db = new Database("", Database.MsSqlClientProvider);
+			IDatabase db = new Database("Squawkings", Database.MsSqlClientProvider);
 
 			var logonUser = db.SingleOrDefault<LogonUser>(@"select u.UserId, s.password from Users u inner join UserSecurityInfo s on s.UserId = u.UserId where u.UserName = @0", input.Username);
 
