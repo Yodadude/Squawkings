@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Global Squawkings";
+}
+
+<div class="main-container">
+	
+	<div class="squawk-title">@ViewBag.Title</div>
+	<div class="squawk-subtitle">
+		See everything happening right now
+	</div>
+
+	<div class="squawk-list">
+		@Html.Partial("_Squawks")
+	</div>
+
+</div>

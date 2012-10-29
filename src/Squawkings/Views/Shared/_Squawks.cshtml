@@ -1,0 +1,24 @@
+﻿@model List<Squawkings.Models.SquawkDisplay>
+
+@foreach (var item in Model)
+{
+ 	<div class="squawk-container">
+		<div class="squawk-avatar">
+			<a href="#">
+				<img src="@Url.Content(item.AvatarUrl)" alt=""/>
+			</a>
+		</div>
+		<div class="squawk-body">
+			<div class="squawk-name">
+				@Html.DisplayFor(modelItem => item.Username)
+				<span>(@item.FullName)</span>
+			</div>
+			<div class="squawk-text">
+				@Html.DisplayFor(modelItem => item.Content)
+			</div>
+			<div class="squawk-time">
+				@Html.DisplayFor(modelItem => item.Time)
+			</div>
+		</div>
+	</div>
+}

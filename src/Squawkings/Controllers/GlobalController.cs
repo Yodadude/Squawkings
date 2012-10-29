@@ -1,27 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
-using NPoco;
 using Squawkings.Models;
 
 namespace Squawkings.Controllers
 {
-	[Authorize]
-    public class HomeController : Controller
+    public class GlobalController : Controller
     {
 
-        public ActionResult Index()
-        {
+		public ActionResult Index()
+		{
 			return View(GetSquawkDisplays());
-        }
+		}
 
 		private static List<SquawkDisplay> GetSquawkDisplays()
 		{
-
-			//IDatabase db = new Database("Squawkings");
-
-			//var logonUser = db.SingleOrDefault<SquawkDisplay>(@"select u.UserId, s.password from Users u inner join UserSecurityInfo s on s.UserId = u.UserId where u.UserName = @0", input.Username);
-
 			var squawks = new List<SquawkDisplay>
 			                  {
 			                      new SquawkDisplay() { AvatarUrl = "~/Content/images/placeholder-profile-img.jpg", Username = "test", FullName = "Test User", Time = DateTime.Now.AddMinutes(0), Content = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."},

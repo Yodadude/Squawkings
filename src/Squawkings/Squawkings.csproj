@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CassetteConfiguration.cs" />
+    <Compile Include="Controllers\GlobalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogonController.cs" />
     <Compile Include="Global.asax.cs">
@@ -158,6 +159,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Logon\Index.cshtml" />
+    <Content Include="Views\Global\Index.cshtml" />
+    <Content Include="Views\Shared\_Squawks.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

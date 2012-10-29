@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Squawkings.Models.SquawkDisplay>
 @{
-	ViewBag.Title = "Global Squawkings";
+	ViewBag.Title = "My Squawkings";
 }
 <div class="main-container">
 	<div class="squawk-title">@ViewBag.Title</div>
@@ -16,27 +16,6 @@
 		</div>
 	</form>
 	<div class="squawk-list">
-		@foreach (var item in Model)
-		{
- 			<div class="squawk-container">
-				<div class="squawk-avatar">
-					<a href="#">
-						<img src="@Url.Content(item.AvatarUrl)" alt=""/>
-					</a>
-				</div>
-				<div class="squawk-body">
-					<div class="squawk-name">
-						@Html.DisplayFor(modelItem => item.Username)
-						<span>(@item.FullName)</span>
-					</div>
-					<div class="squawk-text">
-						@Html.DisplayFor(modelItem => item.Content)
-					</div>
-					<div class="squawk-time">
-						@Html.DisplayFor(modelItem => item.Time)
-					</div>
-				</div>
-			</div>
-		}
+		@Html.Partial("_Squawks")
 	</div>
 </div>

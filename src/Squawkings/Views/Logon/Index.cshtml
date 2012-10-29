@@ -12,6 +12,7 @@
  {
 
 	@Html.AntiForgeryToken()
+	@Html.HiddenFor(x=>x.ReturnUrl)
 	@Html.ValidationSummary(true)
 
 	<div class="editor-field">
@@ -24,7 +25,7 @@
 	</div>
 	<div>
 		<label class="checkbox">
-			<input name="rememberme" type="checkbox" checked value="true"/>
+			@Html.CheckBoxFor(x=>x.RememberMe)
 			Remember me
 		</label>
 	</div>

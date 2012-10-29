@@ -8,8 +8,7 @@ namespace Squawkings.Controllers
 {
     public class LogonController : Controller
     {
-        //
-        // GET: /Logon/
+
         public ActionResult Index()
         {
             return View(new LogonInputModel() {Username = "test"});
@@ -33,7 +32,7 @@ namespace Squawkings.Controllers
 			{
 				if (Crypto.VerifyHashedPassword(logonUser.Password, input.Password))
 				{
-					FormsAuthentication.SetAuthCookie(input.Username, input.RememberMe);
+					FormsAuthentication.SetAuthCookie(logonUser.UserId.ToString(), input.RememberMe);
 					if (!string.IsNullOrEmpty(input.ReturnUrl))
 						return Redirect(input.ReturnUrl);
 					else
