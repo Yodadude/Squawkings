@@ -22,10 +22,34 @@ namespace Squawkings
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
-				"Default", // Route name
-				"{controller}/{action}/{id}", // URL with parameters
+				"Logon", // Route name
+				"logon", // URL with parameters
+				new { controller = "Logon", action = "Index" } // Parameter defaults
+			);
+
+			routes.MapRoute(
+				"Global", // Route name
+				"global", // URL with parameters
+				new { controller = "Global", action = "Index"} // Parameter defaults
+			);
+
+			routes.MapRoute(
+				"Home", // Route name
+				"", // URL with parameters
 				new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
 			);
+
+			routes.MapRoute(
+				"Profile", // Route name
+				"{username}", // URL with parameters
+				new { controller = "Profile", action = "Index", username = "" } // Parameter defaults
+			);
+
+			//routes.MapRoute(
+			//    "Default", // Route name
+			//    "{controller}/{action}/{id}", // URL with parameters
+			//    new { controller = "Home", action = "Index" } // Parameter defaults
+			//);
 
 		}
 
