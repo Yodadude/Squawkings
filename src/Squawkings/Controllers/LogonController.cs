@@ -45,6 +45,13 @@ namespace Squawkings.Controllers
 			return Index();
 		}
 
+
+		public ActionResult Logoff()
+		{
+			FormsAuthentication.SignOut();
+			return RedirectToAction("Index","Logon");
+		}
+
 		private class LogonUser
 		{
 			public int UserId { get; set; }

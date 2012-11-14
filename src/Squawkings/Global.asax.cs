@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using SchoStack.Web.Conventions;
+using SchoStack.Web.Conventions.Core;
 
 namespace Squawkings
 {
@@ -20,12 +22,19 @@ namespace Squawkings
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+			routes.IgnoreRoute("favicon.ico");
 
 			routes.MapRoute(
 				"Logon", // Route name
 				"logon", // URL with parameters
 				new { controller = "Logon", action = "Index" } // Parameter defaults
 			);
+
+			routes.MapRoute(
+				"Logoff", // Route name
+				"logoff", // URL with parameters
+				new { controller = "Logon", action = "Logoff" } // Parameter defaults
+);
 
 			routes.MapRoute(
 				"Global", // Route name
@@ -59,6 +68,11 @@ namespace Squawkings
 
 			RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterRoutes(RouteTable.Routes);
+
+			HtmlConventionFactory.Add(new DefaultHtmlConventions());
+			HtmlConventionFactory.Add(new DataAnnotationHtmlConventions());
+			HtmlConventionFactory.Add(new DataAnnotationValidationHtmlConventions());
+
 		}
 	}
 }

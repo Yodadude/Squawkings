@@ -1,5 +1,50 @@
-﻿@{
-    ViewBag.Title = "Index";
-}
+﻿@using Squawkings
+@using Squawkings.Models
+@model ProfileViewModel
 
-<h2>Profile Page for @ViewBag.UserName</h2>
+<div class="main-container">
+	
+	<div class="profile-container">
+		<div class="profile-detail">
+			<div class="profile-avatar">
+				<a href="#">
+					<img src="@Url.Content(Model.User.AvatarUrl)" alt=""/>
+				</a>
+			</div>
+			<div class="profile-body">
+				<div class="profile-username">
+					@Model.User.Username
+				</div>
+				<div class="profile-fullname">@Model.User.FirstName&nbsp;@Model.User.LastName</div>
+				<div class="profile-bio">
+					@Model.User.Bio
+				</div>
+			</div>
+		</div>
+		<div class="profile-summary">
+			<div class="profile-counters">
+				<span>@Model.Followers</span> Followers
+			</div>
+			<div class="profile-counters">
+				<span>@Model.Following</span> Following
+			</div>
+			@{
+				if (Model.User.UserId == User.Identity.Id())
+				{
+					<div class="profile-follow">
+						<button class="btn btn-primary">Follow</button>
+					</div>
+				}
+	   
+			}
+		</div>
+	</div>
+	
+	<br/>
+	
+	<div class="squawk-list">
+		@Html.Partial("_Squawks", Model.Squawks)
+	</div>
+
+</div>
+

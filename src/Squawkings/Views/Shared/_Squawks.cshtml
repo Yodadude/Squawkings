@@ -1,4 +1,5 @@
-﻿@model List<Squawkings.Models.SquawkDisplay>
+﻿@using Squawkings
+@model List<Squawkings.Models.SquawkDisplay>
 
 @foreach (var item in Model)
 {
@@ -10,14 +11,14 @@
 		</div>
 		<div class="squawk-body">
 			<div class="squawk-name">
-				@Html.DisplayFor(modelItem => item.Username)
+				@item.Username
 				<span>(@item.FullName)</span>
 			</div>
 			<div class="squawk-text">
-				@Html.DisplayFor(modelItem => item.Content)
+				@item.Content
 			</div>
 			<div class="squawk-time">
-				@Html.DisplayFor(modelItem => item.Time)
+				@item.Time.ToPrettyDate()
 			</div>
 		</div>
 	</div>
