@@ -13,7 +13,8 @@
 	<body>
 		<div class="header">
 		</div>
-					<ul>
+		<div class="main-menu">
+			<ul>
 				@{
 					if (User.Identity.IsAuthenticated)
 					{
@@ -29,6 +30,7 @@
 					}
 				}
 			</ul>
+		</div>
 		@RenderBody()
 	</body>
 </html>

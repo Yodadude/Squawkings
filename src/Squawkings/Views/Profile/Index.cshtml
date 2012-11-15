@@ -29,7 +29,7 @@
 				<span>@Model.Following</span> Following
 			</div>
 			@{
-				if (Model.User.UserId == User.Identity.Id())
+				if (Model.User.UserId != User.Identity.Id())
 				{
 					<div class="profile-follow">
 						<button class="btn btn-primary">Follow</button>
