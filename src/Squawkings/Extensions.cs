@@ -17,10 +17,8 @@ namespace Squawkings
 			{
 				return str.Substring(0, length);
 			}
-			else
-			{
-				return str;
-			}
+			
+			return str;
 		}
 
 		public static int Id (this IIdentity identity)

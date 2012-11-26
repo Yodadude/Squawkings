@@ -8,5 +8,6 @@ namespace Squawkings.Models
 		public List<SquawkDisplay> Squawks { get; set; }
 		public int Followers { get; set; }
 		public int Following { get; set; }
+		public bool IsFollowing { get; set; }
 	}
 }

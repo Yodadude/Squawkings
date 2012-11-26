@@ -2,12 +2,12 @@
 
 namespace Squawkings.Models
 {
-	[TableName("Followers")]
+	[TableName("Followers"), PrimaryKey("UserId,FollowerUserId")]
 	public class Followers
 	{
 		[Column("UserId")]
-		public int? UserId { get; set; }
+		public int UserId { get; set; }
 		[Column("FollowerUserId")]
-		public int? FollowerUserId { get; set; }
+		public int FollowerUserId { get; set; }
 	}
 }

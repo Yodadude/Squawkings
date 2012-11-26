@@ -4,8 +4,8 @@
 
 <div class="main-container">
 	
-	<div class="profile-container">
-		<div class="profile-detail">
+	<div class="profile-container row-fluid">
+		<div class="profile-detail span10">
 			<div class="profile-avatar">
 				<a href="#">
 					<img src="@Url.Content(Model.User.AvatarUrl)" alt=""/>
@@ -21,22 +21,35 @@
 				</div>
 			</div>
 		</div>
-		<div class="profile-summary">
+		<div class="profile-summary span2">
 			<div class="profile-counters">
 				<span>@Model.Followers</span> Followers
 			</div>
+			<hr/>
 			<div class="profile-counters">
 				<span>@Model.Following</span> Following
 			</div>
-			@{
-				if (Model.User.UserId != User.Identity.Id())
-				{
-					<div class="profile-follow">
-						<button class="btn btn-primary">Follow</button>
-					</div>
+			<hr/>
+			@using(Html.Form<int>()) {
+				<input type="hidden" name="userId" value="@Model.User.UserId"/>
+			    <input type="hidden" name="userName" value="@ViewBag.UserName"/>
+			   if (Model.User.UserId != User.Identity.Id())
+			   {
+				<div class="profile-follow">
+				@{
+				   if (Model.IsFollowing)
+				   {
+					   @Html.Submit("Unfollow").AddClass("btn");
+				   }
+				   else
+				   {
+					   @Html.Submit("Follow").AddClass("btn");
+				   }
 				}
-	   
-			}
+				</div>
+			  }
+
+		}
 		</div>
 	</div>
 	
