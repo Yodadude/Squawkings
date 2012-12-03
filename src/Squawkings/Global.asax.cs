@@ -43,9 +43,21 @@ namespace Squawkings
 			);
 
 			routes.MapRoute(
+				"Totals", // Route name
+				"totals", // URL with parameters
+				new { controller = "Home", action = "Totals", id = UrlParameter.Optional } // Parameter defaults
+			);
+
+			routes.MapRoute(
 				"Home", // Route name
 				"", // URL with parameters
 				new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+			);
+
+			routes.MapRoute(
+				"Upload", // Route name
+				"upload", // URL with parameters
+				new {controller = "Profile", action = "Upload", username = ""} // Parameter defaults
 			);
 
 			routes.MapRoute(
@@ -72,6 +84,7 @@ namespace Squawkings
 			HtmlConventionFactory.Add(new DefaultHtmlConventions());
 			HtmlConventionFactory.Add(new DataAnnotationHtmlConventions());
 			HtmlConventionFactory.Add(new DataAnnotationValidationHtmlConventions());
+			HtmlConventionFactory.Add(new UploadFileHtmlConvention());
 
 		}
 	}

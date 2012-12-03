@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Squawkings.Models.SquawkDisplay>
+﻿@using Squawkings.ViewModels
+@model Squawkings.Models.ListSquawkingsViewModel
 @{
 	ViewBag.Title = "My Squawkings";
 }
@@ -7,15 +8,20 @@
 	<div class="squawk-subtitle">
 		See everything happening right now
 	</div>
-	<form method="POST" action="">
+	@using (Html.Form<SquawkInputModel>())
+	{
 		<div class="squawk-input">
-			<textarea name="squawk">This is my first Squawk!</textarea>
+			<div class="editor-field">
+				<!--<textarea id="squawk" name="squawk"></textarea>-->
+				@Html.Input(model => model.Squawk.Squawk).Attr("placeholder", "This is my first Squawk!")
+			</div>
+			@Html.ValidationSummary(true)
 			<div>
 				<input type="submit" value="Squawk" />
 			</div>
 		</div>
-	</form>
+	}
 	<div class="squawk-list">
-		@Html.Partial("_Squawks")
+		@Html.Partial("_Squawks", Model.Squawks)
 	</div>
 </div>

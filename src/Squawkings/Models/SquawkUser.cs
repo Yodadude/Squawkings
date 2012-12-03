@@ -16,6 +16,9 @@ namespace Squawkings.Models
 		public string LastName { get; set; }
 		public string Bio { get; set; }
 		public string AvatarUrl { get; set; }
+		public string Email { get; set; }
+		public bool IsGravatar { get; set; }
+
 		[Ignore]
 		public string FullName { get { return FirstName + LastName; } }
 	}

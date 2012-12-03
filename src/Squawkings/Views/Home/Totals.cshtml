@@ -1,0 +1,15 @@
+﻿@using System.Web.Mvc.Html
+@model Squawkings.ViewModels.TotalsViewModel
+
+<div>
+	Total Squawks: 
+	<span>
+		@Html.Display(model => model.SquawksTotals)
+	</span>
+</div>
+<div>
+	Total Users: 
+	<span>
+		@Html.Display(model => model.UserTotals)
+	</span>
+</div>

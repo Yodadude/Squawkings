@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Security.Principal;
+using NPoco;
+using Squawkings.Models;
 
 namespace Squawkings
 {
@@ -25,6 +27,20 @@ namespace Squawkings
 		{
 			return identity.IsAuthenticated ? Convert.ToInt32(identity.Name) : 0;
 		}
+
+		public static string GetName(this IIdentity identity)
+		{
+			var userName = "";
+
+			if (identity.IsAuthenticated)
+			{
+				IDatabase db = new Database("Squawkings");
+				userName = db.SingleOrDefault<string>(@"select UserName from Users where UserId = @0", identity.Id());
+			}
+
+			return userName;
+		}
+
 
 		public static string ToPrettyDate(this DateTime d)
 		{

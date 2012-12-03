@@ -1,0 +1,42 @@
+﻿@using Squawkings
+@using Squawkings.ViewModels
+@model ProfileUploadInputModel
+@{ ViewBag.Title = "Profile Update"; }
+
+<div class="main-container">
+
+	<div class="squawk-title">@ViewBag.Title</div>
+	<div class="squawk-subtitle">
+		Use a Gravatar or upload an image
+	</div>
+
+	<div class="squawk-box">
+		@using (Html.Form<ProfileUploadInputModel>("Upload", "Profile", null, x => x.Attr("enctype", "multipart/form-data")))
+		{
+			@Html.AntiForgeryToken()
+			@Html.ValidationSummary(true)
+
+			<label for="IsGravatar">
+				Use Gravatar: @Html.Input(x => x.IsGravatar)
+			</label>
+
+			<label for="ImageFile">Image:
+				@Html.Input(model => model.ImageFile)
+			</label>
+
+			@Html.Submit("Save").AddClass("btn btn-primary")
+			<a href="@Url.Action("Index", new { username = User.Identity.GetName() })" class="btn">Cancel</a>
+		}
+	</div>
+</div>
+<script type="text/javascript">
+	$(function () {
+		$("#IsGravatar").click(function (e) {
+			if (this.checked)
+				$(".editor-field").hide();
+			else {
+				$(".editor-field").show();
+			}
+		});
+	});
+</script>
