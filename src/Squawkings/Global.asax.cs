@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FluentValidation.Attributes;
+using FluentValidation.Mvc;
 using SchoStack.Web.Conventions;
 using SchoStack.Web.Conventions.Core;
 
@@ -86,6 +88,7 @@ namespace Squawkings
 			HtmlConventionFactory.Add(new DataAnnotationValidationHtmlConventions());
 			HtmlConventionFactory.Add(new UploadFileHtmlConvention());
 
+			ModelValidatorProviders.Providers.Add(new FluentValidationModelValidatorProvider(new AttributedValidatorFactory()));
 		}
 	}
 }

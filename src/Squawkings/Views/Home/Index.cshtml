@@ -1,26 +1,24 @@
 ﻿@using Squawkings.ViewModels
-@model Squawkings.Models.ListSquawkingsViewModel
+@model HomeIndexViewModel
 @{
-	ViewBag.Title = "My Squawkings";
+	ViewBag.Title = "Local Squawks";
 }
 <div class="main-container">
 	<div class="squawk-title">@ViewBag.Title</div>
 	<div class="squawk-subtitle">
 		See everything happening right now
 	</div>
-	@using (Html.Form<SquawkInputModel>())
-	{
+	<form method="POST" action="/">
 		<div class="squawk-input">
 			<div class="editor-field">
-				<!--<textarea id="squawk" name="squawk"></textarea>-->
-				@Html.Input(model => model.Squawk.Squawk).Attr("placeholder", "This is my first Squawk!")
+				@Html.Input(model => model.Squawk).Attr("placeholder", "This is my first Squawk!")
 			</div>
-			@Html.ValidationSummary(true)
-			<div>
-				<input type="submit" value="Squawk" />
+			<div class="squawk-input-footer row-fluid">
+				<div class="squawk-input-error span3">&nbsp;@Html.ValidationMessage(model => model.Squawk)</div>
+				<div class="squawk-input-submit span9"><input type="submit" value="Squawk" class="btn btn-primary" /></div>
 			</div>
 		</div>
-	}
+	</form>
 	<div class="squawk-list">
 		@Html.Partial("_Squawks", Model.Squawks)
 	</div>

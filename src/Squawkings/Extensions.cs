@@ -2,6 +2,7 @@
 using System.Security.Principal;
 using NPoco;
 using Squawkings.Models;
+using StructureMap;
 
 namespace Squawkings
 {
@@ -34,7 +35,8 @@ namespace Squawkings
 
 			if (identity.IsAuthenticated)
 			{
-				IDatabase db = new Database("Squawkings");
+				//IDatabase db = new Database("Squawkings");
+				var db = ObjectFactory.GetInstance<IDatabase>();
 				userName = db.SingleOrDefault<string>(@"select UserName from Users where UserId = @0", identity.Id());
 			}
 
