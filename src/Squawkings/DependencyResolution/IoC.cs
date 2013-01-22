@@ -1,6 +1,9 @@
 using FluentValidation;
 using NPoco;
+using Squawkings.Controllers;
+using StackExchange.Profiling;
 using StructureMap;
+
 namespace Squawkings {
     public static class IoC {
         public static IContainer Initialize() {
@@ -10,9 +13,10 @@ namespace Squawkings {
                                     {
                                         scan.TheCallingAssembly();
                                         scan.WithDefaultConventions();
-                                    	scan.ConnectImplementationsToTypesClosing(typeof (IValidator<>));
+                                    	scan.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
                                     });
 							x.For<IDatabase>().HybridHttpOrThreadLocalScoped().Use(MyDatabase.GetDatabase);
+							x.For<IAuthentication>().HybridHttpOrThreadLocalScoped().Use(new SquawkAuthentication());
                         });
             return ObjectFactory.Container;
         }
@@ -26,3 +30,4 @@ public class MyDatabase
 		return new Database("Squawkings");
 	}
 }
+

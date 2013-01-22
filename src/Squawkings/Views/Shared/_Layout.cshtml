@@ -1,4 +1,5 @@
 ﻿@using Squawkings
+@using StackExchange.Profiling
 @{
     Bundles.Reference("Content");
 }
@@ -43,5 +44,6 @@
 			</div>
 		   }
 		}
+		@MiniProfiler.RenderIncludes(RenderPosition.Right)
 	</body>
 </html>

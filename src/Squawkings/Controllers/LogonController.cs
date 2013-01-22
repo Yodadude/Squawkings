@@ -56,7 +56,7 @@ namespace Squawkings.Controllers
 
 		public ActionResult Logoff()
 		{
-			FormsAuthentication.SignOut();
+			_auth.SignOut();
 			return RedirectToAction("Index","Logon");
 		}
 
@@ -70,6 +70,7 @@ namespace Squawkings.Controllers
 	public interface IAuthentication
 	{
 		void SetAuthCookie(string userId, bool rememberMe);
+		void SignOut();
 	}
 
 	public class SquawkAuthentication : IAuthentication
@@ -77,6 +78,11 @@ namespace Squawkings.Controllers
 		public void SetAuthCookie(string userId, bool rememberMe)
 		{
 			FormsAuthentication.SetAuthCookie(userId, rememberMe);
+		}
+
+		public void SignOut()
+		{
+			FormsAuthentication.SignOut();
 		}
 	}
 }
