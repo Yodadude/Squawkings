@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Squawkings.Models;
 
-namespace Squawkings.Models
+namespace Squawkings.ViewModels
 {
 	public class ProfileViewModel
 	{

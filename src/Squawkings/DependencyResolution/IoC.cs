@@ -1,8 +1,10 @@
 using System.Configuration;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Web;
 using FluentValidation;
 using NPoco;
+using Squawkings;
 using Squawkings.Controllers;
 using StackExchange.Profiling;
 using StackExchange.Profiling.Data;
@@ -19,7 +21,7 @@ namespace Squawkings {
                                         scan.WithDefaultConventions();
                                     	scan.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
                                     });
-							x.For<IDatabase>().HybridHttpOrThreadLocalScoped().Use(MyDatabase.GetDatabase);
+							x.For<IDatabase>().HybridHttpOrThreadLocalScoped().Use(MyDatabase1.GetDatabase);
 							x.For<IAuthentication>().HybridHttpOrThreadLocalScoped().Use(new SquawkAuthentication());
                         });
             return ObjectFactory.Container;
@@ -27,21 +29,23 @@ namespace Squawkings {
     }
 }
 
-public class MyDatabase
+public class MyDatabase1
 {
 	public static IDatabase GetDatabase()
 	{
-		if (HttpContext.Current.Request.IsLocal)
+		return InitNPoco.DbFact.Build(new MyDatabase("Squawkings"));
+	}
+
+	public class MyDatabase : Database
+	{
+		public MyDatabase(string connectionStringName) : base(connectionStringName)
 		{
-			var conn =
-				new ProfiledDbConnection(new SqlConnection(ConfigurationManager.ConnectionStrings["Squawkings"].ConnectionString),
-				                         MiniProfiler.Current);
-			var db = new Database(conn);
-			db.Connection.Open();
-			return db;
 		}
-		
-		return new Database("Squawkings");
+
+		public override System.Data.IDbConnection OnConnectionOpened(System.Data.IDbConnection conn)
+		{
+			return new ProfiledDbConnection((DbConnection) conn, MiniProfiler.Current);
+		}
 	}
 }
 

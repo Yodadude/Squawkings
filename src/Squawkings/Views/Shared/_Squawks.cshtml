@@ -1,12 +1,22 @@
-﻿@using Squawkings
-@model List<Squawkings.Models.SquawkDisplay>
+﻿@using GravatarHelper.Extensions
+@using Squawkings
+@model List<Squawkings.ViewModels.SquawkDisplay>
 
 @foreach (var item in Model)
 {
  	<div class="squawk-container">
 		<div class="squawk-avatar">
 			<a href="/@item.Username">
-				<img src="@Url.Content(item.AvatarUrl)" alt=""/>
+				@{ 
+					if (item.IsGravatar)
+				    {
+				   		@Html.Gravatar(item.Email, 80)
+				    }
+				    else
+				    {
+				   		<img src="@Url.Content(item.AvatarUrl)" alt=""/>
+				    }
+				}
 			</a>
 		</div>
 		<div class="squawk-body">

@@ -6,8 +6,10 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using FluentValidation.Attributes;
 using FluentValidation.Mvc;
+using NPoco.FluentMappings;
 using SchoStack.Web.Conventions;
 using SchoStack.Web.Conventions.Core;
+using Squawkings.Models;
 
 namespace Squawkings
 {
@@ -89,6 +91,9 @@ namespace Squawkings
 			HtmlConventionFactory.Add(new UploadFileHtmlConvention());
 
 			ModelValidatorProviders.Providers.Add(new FluentValidationModelValidatorProvider(new AttributedValidatorFactory()));
+
+			InitNPoco.Init();
 		}
 	}
+
 }

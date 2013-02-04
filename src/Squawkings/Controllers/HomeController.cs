@@ -33,7 +33,7 @@ namespace Squawkings.Controllers
 
 			if (ModelState.IsValid)
 			{
-				var newSquawk = new Squawks
+				var newSquawk = new Squawk
 				                	{
 				                		UserId = User.Identity.Id(),
 										Content = model.Squawk.Left(400), 
@@ -62,8 +62,8 @@ namespace Squawkings.Controllers
 		private List<SquawkDisplay> GetSquawkDisplays()
 		{
 
-			//var squawks = _db.Fetch<SquawkDisplay>(@"select u.AvatarUrl, u.UserName, u.FirstName + ' '+ u.LastName as FullName, s.CreatedAt as Time, s.Content from Squawks s inner join Users u on u.UserId = s.UserId where u.UserId = @0 or u.UserId in (select UserId from Followers where FollowerUserId = @0) order by s.SquawkId desc", User.Identity.Id());
-			var squawks = _db.SkipTake<SquawkDisplay>(0,20,@"select u.AvatarUrl, u.UserName, u.FirstName + ' '+ u.LastName as FullName, s.CreatedAt as Time, s.Content from Squawks s inner join Users u on u.UserId = s.UserId where u.UserId = @0 or u.UserId in (select UserId from Followers where FollowerUserId = @0) order by s.SquawkId desc", User.Identity.Id());
+			//var squawks = _db.Fetch<SquawkDisplay>(@"select u.AvatarUrl, u.UserName, u.FirstName + ' '+ u.LastName as FullName, s.CreatedAt as Time, s.Content from Squawk s inner join Users u on u.UserId = s.UserId where u.UserId = @0 or u.UserId in (select UserId from Followers where FollowerUserId = @0) order by s.SquawkId desc", User.Identity.Id());
+			var squawks = _db.SkipTake<SquawkDisplay>(0,20,@"select u.AvatarUrl, u.UserName, u.FirstName, u.LastName, u.Email, u.IsGravatar, s.CreatedAt as Time, s.Content from Squawks s inner join Users u on u.UserId = s.UserId where u.UserId = @0 or u.UserId in (select UserId from Followers where FollowerUserId = @0) order by s.SquawkId desc", User.Identity.Id());
 
 			return squawks;
 

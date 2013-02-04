@@ -5,7 +5,7 @@ namespace Squawkings.Models
 {
 	[TableName("Squawks")]
 	[PrimaryKey("SquawkId")]
-	public class Squawks
+	public class Squawk
 	{
 		[Column("SquawkId")]
 		public int SquawkId { get; set; }

@@ -1,6 +1,5 @@
 ﻿@using Squawkings
-@using Squawkings.Models
-@model ProfileViewModel
+@model Squawkings.ViewModels.ProfileViewModel
 
 <div class="main-container">
 	
@@ -8,7 +7,17 @@
 		<div class="profile-detail span10">
 			<div class="profile-avatar">
 				<a href="/Upload">
-					<img src="@Url.Content(Model.User.AvatarUrl)" alt=""/>
+					@{
+						if (Model.User.IsGravatar)
+						{
+							@Html.Gravatar(Model.User.Email, 58)
+						}
+						else
+						{
+							<img src="@Url.Content(Model.User.AvatarUrl)" alt=""/>
+						}
+					}
+					
 				</a>
 			</div>
 			<div class="profile-body">
@@ -30,26 +39,27 @@
 				<span>@Model.Following</span> Following
 			</div>
 			<hr/>
-			@using(Html.Form<int>()) {
+			@using (Html.Form<int>())
+   {
 				<input type="hidden" name="userId" value="@Model.User.UserId"/>
 			    <input type="hidden" name="userName" value="@ViewBag.UserName"/>
-			   if (Model.User.UserId != User.Identity.Id())
-			   {
+	   if (Model.User.UserId != User.Identity.Id())
+	   {
 				<div class="profile-follow">
 				@{
-				   if (Model.IsFollowing)
-				   {
+		   if (Model.IsFollowing)
+		   {
 					   @Html.Submit("Unfollow").AddClass("btn");
-				   }
-				   else
-				   {
+		   }
+		   else
+		   {
 					   @Html.Submit("Follow").AddClass("btn");
-				   }
+		   }
 				}
 				</div>
-			  }
+	   }
 
-		}
+   }
 		</div>
 	</div>
 	

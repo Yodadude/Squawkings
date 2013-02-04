@@ -33,7 +33,7 @@ namespace Squawkings.Controllers
 
 			vm.Squawks =
 				_db.Fetch<SquawkDisplay>(
-					@"select u.AvatarUrl, u.UserName, u.FirstName + ' ' + u.LastName as FullName, s.CreatedAt as Time, s.Content from Squawks s inner join Users u on u.UserId = s.UserId where u.UserId = @0 order by s.SquawkId desc",
+					@"select u.AvatarUrl, u.UserName, u.FirstName, u.LastName, u.Email, u.IsGravatar, s.CreatedAt as Time, s.Content from Squawks s inner join Users u on u.UserId = s.UserId where u.UserId = @0 order by s.SquawkId desc",
 					vm.User.UserId);
 			vm.Followers = _db.ExecuteScalar<int>(@"select count(*) from Followers where UserId = @0", vm.User.UserId);
 			vm.Following = _db.ExecuteScalar<int>(@"select count(*) from Followers where FollowerUserId = @0", vm.User.UserId);
@@ -92,15 +92,22 @@ namespace Squawkings.Controllers
 
 			using (var tran = _db.GetTransaction())
 			{
-
+				
 				var user = _db.SingleOrDefault<SquawkUser>(@"select * from Users where UserId = @0 ", User.Identity.Id());
 
-				if (model.IsGravatar)
-				{
-					user.AvatarUrl = @"http://www.gravatar.com/avatar/" + Crypto.Hash(user.Email, "md5").ToLower() + ".png";
-				}
-				else
-				{
+				//if (model.IsGravatar)
+				//{
+				//    user.AvatarUrl = @"http://www.gravatar.com/avatar/" + Crypto.Hash(user.Email, "md5").ToLower() + ".png";
+				//}
+				//else
+				//{
+				//    string fileName =
+				//        model.ImageFile.FileName.Substring(model.ImageFile.FileName.LastIndexOf(@"\", System.StringComparison.Ordinal) + 1);
+				//    model.ImageFile.SaveAs(Server.MapPath("~/Content/dev_images/") + fileName);
+				//    user.AvatarUrl = "~/Content/dev_images/" + fileName;
+				//}
+
+				if (!model.IsGravatar) {
 					string fileName =
 						model.ImageFile.FileName.Substring(model.ImageFile.FileName.LastIndexOf(@"\", System.StringComparison.Ordinal) + 1);
 					model.ImageFile.SaveAs(Server.MapPath("~/Content/dev_images/") + fileName);

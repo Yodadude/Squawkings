@@ -77,9 +77,17 @@
     <Reference Include="MiniProfiler">
       <HintPath>..\packages\MiniProfiler.2.0.2\lib\net40\MiniProfiler.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>..\packages\Npgsql.2.0.12.1\lib\net40\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>..\packages\Npgsql.2.0.12.1\lib\net40\Npgsql.dll</HintPath>
+    </Reference>
     <Reference Include="NPoco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NPoco.1.0.5-beta\lib\net40\NPoco.dll</HintPath>
+      <HintPath>..\packages\NPoco.2.0.5-alpha\lib\net40\NPoco.dll</HintPath>
+    </Reference>
+    <Reference Include="policy.2.0.Npgsql">
+      <HintPath>..\packages\Npgsql.2.0.12.1\lib\net40\policy.2.0.Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="SchoStack.Web, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SchoStack.Web.0.6.5\lib\net40\SchoStack.Web.dll</HintPath>
@@ -128,9 +136,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InitNPoco.cs" />
     <Compile Include="Models\Followers.cs" />
-    <Compile Include="Models\Squawks.cs" />
+    <Compile Include="Models\Squawk.cs" />
     <Compile Include="Models\SquawkUser.cs" />
+    <Compile Include="Models\SquawkUserSecurityInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SquawkDisplay.cs" />
     <Compile Include="UploadFileHtmlConvention.cs" />
