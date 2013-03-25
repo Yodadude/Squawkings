@@ -8,7 +8,7 @@ namespace Squawkings.Models
 {
 	[TableName("Users")]
 	[PrimaryKey("UserId", AutoIncrement = true)]
-	public class SquawkUser
+	public class User
 	{
 		public int UserId { get; set; }
 		public string Username { get; set; }

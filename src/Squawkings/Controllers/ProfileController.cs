@@ -24,7 +24,7 @@ namespace Squawkings.Controllers
 
 			var vm = new ProfileViewModel();
 
-			vm.User = _db.SingleOrDefault<SquawkUser>(@"select * from Users where UserName = @0", userName);
+			vm.User = _db.SingleOrDefault<User>(@"select * from Users where UserName = @0", userName);
 
 			if (vm.User == null)
 			{
@@ -93,19 +93,7 @@ namespace Squawkings.Controllers
 			using (var tran = _db.GetTransaction())
 			{
 				
-				var user = _db.SingleOrDefault<SquawkUser>(@"select * from Users where UserId = @0 ", User.Identity.Id());
-
-				//if (model.IsGravatar)
-				//{
-				//    user.AvatarUrl = @"http://www.gravatar.com/avatar/" + Crypto.Hash(user.Email, "md5").ToLower() + ".png";
-				//}
-				//else
-				//{
-				//    string fileName =
-				//        model.ImageFile.FileName.Substring(model.ImageFile.FileName.LastIndexOf(@"\", System.StringComparison.Ordinal) + 1);
-				//    model.ImageFile.SaveAs(Server.MapPath("~/Content/dev_images/") + fileName);
-				//    user.AvatarUrl = "~/Content/dev_images/" + fileName;
-				//}
+				var user = _db.SingleOrDefault<User>(@"select * from Users where UserId = @0 ", User.Identity.Id());
 
 				if (!model.IsGravatar) {
 					string fileName =

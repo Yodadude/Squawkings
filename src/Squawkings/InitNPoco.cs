@@ -1,3 +1,4 @@
+using System.Linq;
 using NPoco;
 using NPoco.FluentMappings;
 using Squawkings.Models;
@@ -14,9 +15,8 @@ namespace Squawkings
 			var config = FluentMappingConfiguration.Scan(x =>
 			                                             	{
 			                                             		x.TheCallingAssembly();
-			                                             		x.PrimaryKeysNamed(y => y.Name.ToLower() + "id");
-			                                             		x.TablesNamed(y => Inflector.MakePlural(y.Name).ToLower());
-			                                             		x.Columns.Named(y => y.Name.ToLower());
+			                                             		x.WithSmartConventions(true);
+																x.Columns.IgnoreWhere(y => y.GetCustomAttributes(typeof(IgnoreAttribute), true).Any());
 			                                             		x.OverrideMappingsWith(new OverrideNPoco());
 			                                             	});
 			DbFact.Config().WithFluentConfig(config);
