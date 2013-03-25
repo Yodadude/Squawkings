@@ -92,6 +92,10 @@
     <Reference Include="SchoStack.Web, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SchoStack.Web.0.6.5\lib\net40\SchoStack.Web.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\packages\ServiceStack.Common.3.9.42\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=3.9.42.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
     </Reference>
@@ -225,7 +229,12 @@
     <Content Include="Views\Home\Totals.cshtml" />
     <Content Include="Views\Profile\Upload.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Squawkings.Contracts\Squawkings.Contracts.csproj">
+      <Project>{29B01F5F-9B85-4EFF-A131-F87C161F5A24}</Project>
+      <Name>Squawkings.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

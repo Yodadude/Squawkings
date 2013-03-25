@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using NPoco;
+using ServiceStack.ServiceClient.Web;
+using Squawkings.Contracts;
 using Squawkings.ViewModels;
+using ServiceStack.Common;
 
 namespace Squawkings.Controllers
 {
@@ -16,6 +19,12 @@ namespace Squawkings.Controllers
 
 		public ActionResult Index()
 		{
+
+			//var client = new JsonServiceClient("http://localhost:1337");
+			//var reponse = client.Get(new Hello {Name = "Dave"});
+
+			//Response.Write(reponse.Result);
+
 			return View(GetSquawkDisplays());
 		}
 
