@@ -28,59 +28,22 @@ namespace Squawkings
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 			routes.IgnoreRoute("favicon.ico");
 
-			routes.MapRoute(
-				"Logon", // Route name
-				"logon", // URL with parameters
-				new { controller = "Logon", action = "Index" } // Parameter defaults
-			);
-
-			routes.MapRoute(
-				"Logoff", // Route name
-				"logoff", // URL with parameters
-				new { controller = "Logon", action = "Logoff" } // Parameter defaults
-);
-
-			routes.MapRoute(
-				"Global", // Route name
-				"global", // URL with parameters
-				new { controller = "Global", action = "Index"} // Parameter defaults
-			);
-
-			routes.MapRoute(
-				"Totals", // Route name
-				"totals", // URL with parameters
-				new { controller = "Home", action = "Totals", id = UrlParameter.Optional } // Parameter defaults
-			);
-
-			routes.MapRoute(
-				"Home", // Route name
-				"", // URL with parameters
-				new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-			);
-
-			routes.MapRoute(
-				"Upload", // Route name
-				"upload", // URL with parameters
-				new {controller = "Profile", action = "Upload", username = ""} // Parameter defaults
-			);
-
-			routes.MapRoute(
-				"Profile", // Route name
-				"{username}", // URL with parameters
-				new { controller = "Profile", action = "Index", username = "" } // Parameter defaults
-			);
-
-			//routes.MapRoute(
-			//    "Default", // Route name
-			//    "{controller}/{action}/{id}", // URL with parameters
-			//    new { controller = "Home", action = "Index" } // Parameter defaults
-			//);
+			routes.MapRoute("Logon","logon", new { controller = "Logon", action = "Index" });
+			routes.MapRoute("Logoff","logoff", new { controller = "Logon", action = "Logoff" });
+			routes.MapRoute("Global","global", new { controller = "Global", action = "Index"});
+			routes.MapRoute("Totals", "totals", new { controller = "Home", action = "Totals", id = UrlParameter.Optional });
+			routes.MapRoute("Home", "", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+			routes.MapRoute("Upload", "upload", new {controller = "Profile", action = "Upload", username = ""});
+			routes.MapRoute("Chat", "chat", new { controller = "Chat", action = "Index"});
+			routes.MapRoute("Profile", "{username}", new { controller = "Profile", action = "Index", username = "" });
 
 		}
 
 		protected void Application_Start()
 		{
 			AreaRegistration.RegisterAllAreas();
+
+			RouteTable.Routes.MapHubs();
 
 			RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterRoutes(RouteTable.Routes);
